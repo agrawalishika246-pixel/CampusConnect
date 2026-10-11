@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusConnect – College Event Management</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ╔══════════════════════════════════════════════════════╗
+       ║  NAVBAR – shared across all pages                   ║
+       ╚══════════════════════════════════════════════════════╝ -->
+  <nav class="navbar">
+    <div class="container">
+      <!-- Brand logo / name -->
+      <a href="index.html" class="nav-brand">
+        <span class="brand-icon">🎓</span>
+        CampusConnect
+      </a>
+
+      <!-- Desktop navigation links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+
+      <!-- Hamburger button (visible on mobile only) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main content area -->
+  <main class="page-body">
+
+    <!-- ── Hero Section ─────────────────────────────────── -->
+    <section class="hero">
+      <div class="container">
+        <h1>Your Campus.<br/>Your Events.<br/>Your Community.</h1>
+        <p>Discover, register and manage college events effortlessly. 
+           From tech fests to cultural nights — everything is in one place.</p>
+        <div class="hero-actions">
+          <a href="events.html" class="btn btn-primary btn-lg">Explore Events →</a>
+          <a href="register.html" class="btn btn-outline btn-lg">Register Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Stats Bar ─────────────────────────────────────── -->
+    <div class="stats-bar">
+      <div class="container">
+        <div class="stats-grid" id="statsGrid">
+          <!-- Populated by home.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Upcoming Events Section ───────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">What's On</span>
+          <h2>Upcoming Events</h2>
+          <p>Don't miss out — browse our latest upcoming college events below.</p>
+        </div>
+
+        <!-- Event cards grid — first 6 events shown -->
+        <div class="events-grid" id="featuredEvents">
+          <!-- Populated by home.js -->
+        </div>
+
+        <div class="text-center mt-4">
+          <a href="events.html" class="btn btn-primary btn-lg">View All Events →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Categories Section ─────────────────────────────── -->
+    <section class="section" style="background: #f1f5f9; padding: 3rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Browse by Type</span>
+          <h2>Event Categories</h2>
+          <p>Find events that match your interests.</p>
+        </div>
+        <div class="grid-3" id="categoriesGrid">
+          <!-- Populated by home.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ── How It Works ──────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Simple Steps</span>
+          <h2>How It Works</h2>
+          <p>Participating in a college event has never been easier.</p>
+        </div>
+        <div class="grid-3">
+          <!-- Step 1 -->
+          <div class="card" style="padding: 2rem; text-align: center;">
+            <div style="font-size:2.5rem; margin-bottom:1rem;">🔍</div>
+            <h3>1. Discover Events</h3>
+            <p class="mt-1">Browse all upcoming college events. Filter by category or search by name.</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="card" style="padding: 2rem; text-align: center;">
+            <div style="font-size:2.5rem; margin-bottom:1rem;">📝</div>
+            <h3>2. Register Online</h3>
+            <p class="mt-1">Fill in a quick form with your name, email, branch and year. Done in seconds.</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="card" style="padding: 2rem; text-align: center;">
+            <div style="font-size:2.5rem; margin-bottom:1rem;">🎉</div>
+            <h3>3. Attend &amp; Enjoy</h3>
+            <p class="mt-1">Show up, participate, and make the most of your college experience.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 <strong>CampusConnect</strong> — College Event Management System</p>
+      <p class="mt-1">
+        <a href="index.html">Home</a> ·
+        <a href="events.html">Events</a> ·
+        <a href="register.html">Register</a> ·
+        <a href="admin.html">Admin</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Load shared utilities first, then page-specific JS -->
+  <script src="js/app.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

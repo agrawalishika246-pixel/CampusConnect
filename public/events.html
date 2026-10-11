@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events – CampusConnect</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-icon">🎓</span>
+        CampusConnect
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="page-body">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="container">
+        <h1>📅 All Events</h1>
+        <p>Search, filter, and register for upcoming college events.</p>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+
+        <!-- ── Filter Bar ──────────────────────────────────── -->
+        <div class="filter-bar">
+          <!-- Search input -->
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="form-control"
+                   placeholder="Search events by name or venue…" />
+          </div>
+
+          <!-- Category chips -->
+          <div class="filter-chips" id="categoryChips">
+            <button class="chip active" data-cat="all">All</button>
+            <button class="chip" data-cat="tech">💻 Tech</button>
+            <button class="chip" data-cat="culture">🎭 Culture</button>
+            <button class="chip" data-cat="sports">⚽ Sports</button>
+            <button class="chip" data-cat="workshop">🔧 Workshop</button>
+            <button class="chip" data-cat="seminar">🎓 Seminar</button>
+            <button class="chip" data-cat="other">📌 Other</button>
+          </div>
+
+          <!-- Sort selector -->
+          <select id="sortSelect" class="form-control" style="max-width:180px;">
+            <option value="date-asc">Date: Soonest</option>
+            <option value="date-desc">Date: Latest</option>
+            <option value="name-asc">Name: A→Z</option>
+            <option value="seats-desc">Most Seats</option>
+          </select>
+        </div>
+
+        <!-- Results count label -->
+        <p id="resultsCount" class="text-muted mb-3" style="font-size:.88rem;"></p>
+
+        <!-- Events grid — populated by events.js -->
+        <div class="events-grid" id="eventsGrid"></div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 <strong>CampusConnect</strong> — College Event Management System</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/events.js"></script>
+</body>
+</html>

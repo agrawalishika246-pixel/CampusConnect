@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard – CampusConnect</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-icon">🎓</span>
+        CampusConnect
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="page-body">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="container">
+        <h1>⚙️ Admin Dashboard</h1>
+        <p>Manage events, view registrations, and monitor campus activity.</p>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+
+        <!-- ── Top Stats ───────────────────────────────────── -->
+        <div class="admin-stats" id="adminStats">
+          <!-- Populated by admin.js -->
+        </div>
+
+        <!-- ── Two-column layout: Add Event form + Events Table ── -->
+        <div class="admin-grid">
+
+          <!-- Left column: Add Event Form -->
+          <div class="card" id="addEventCard">
+            <div class="card-header">
+              <h3>➕ Add New Event</h3>
+            </div>
+            <div class="card-body">
+              <form id="addEventForm" novalidate>
+
+                <div class="form-group">
+                  <label for="evtName">Event Name <span class="required">*</span></label>
+                  <input type="text" id="evtName" class="form-control"
+                         placeholder="e.g. TechFest 2025" required />
+                  <span class="form-error d-none" id="evtErr-name">Event name is required.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="evtCategory">Category <span class="required">*</span></label>
+                  <select id="evtCategory" class="form-control" required>
+                    <option value="">— Select category —</option>
+                    <option value="tech">💻 Tech</option>
+                    <option value="culture">🎭 Culture</option>
+                    <option value="sports">⚽ Sports</option>
+                    <option value="workshop">🔧 Workshop</option>
+                    <option value="seminar">🎓 Seminar</option>
+                    <option value="other">📌 Other</option>
+                  </select>
+                  <span class="form-error d-none" id="evtErr-cat">Please select a category.</span>
+                </div>
+
+                <!-- Date and Time side by side -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                  <div class="form-group">
+                    <label for="evtDate">Date <span class="required">*</span></label>
+                    <input type="date" id="evtDate" class="form-control" required />
+                    <span class="form-error d-none" id="evtErr-date">Date is required.</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="evtTime">Time <span class="required">*</span></label>
+                    <input type="time" id="evtTime" class="form-control" required />
+                    <span class="form-error d-none" id="evtErr-time">Time is required.</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="evtVenue">Venue <span class="required">*</span></label>
+                  <input type="text" id="evtVenue" class="form-control"
+                         placeholder="e.g. Main Auditorium, Block A" required />
+                  <span class="form-error d-none" id="evtErr-venue">Venue is required.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="evtSeats">Total Seats <span class="required">*</span></label>
+                  <input type="number" id="evtSeats" class="form-control"
+                         placeholder="e.g. 200" min="1" max="9999" required />
+                  <span class="form-error d-none" id="evtErr-seats">
+                    Enter a valid number of seats (1–9999).
+                  </span>
+                </div>
+
+                <div class="form-group">
+                  <label for="evtOrganizer">Organizer</label>
+                  <input type="text" id="evtOrganizer" class="form-control"
+                         placeholder="e.g. Computer Science Department" />
+                </div>
+
+                <div class="form-group">
+                  <label for="evtContact">Contact Email</label>
+                  <input type="email" id="evtContact" class="form-control"
+                         placeholder="e.g. event@college.edu" />
+                </div>
+
+                <div class="form-group">
+                  <label for="evtDesc">Description <span class="required">*</span></label>
+                  <textarea id="evtDesc" class="form-control" rows="3"
+                            placeholder="Brief description of the event…" required></textarea>
+                  <span class="form-error d-none" id="evtErr-desc">Description is required.</span>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">
+                  ✅ Add Event
+                </button>
+
+              </form>
+            </div>
+          </div>
+
+          <!-- Right column: Events Table -->
+          <div class="card">
+            <div class="card-header">
+              <h3>📋 All Events</h3>
+              <button class="btn btn-danger btn-sm" id="clearAllBtn"
+                      onclick="confirmClearAll()">
+                🗑️ Clear All
+              </button>
+            </div>
+            <div class="card-body" style="padding:0;">
+              <div class="table-wrap" id="eventsTableWrap">
+                <!-- Populated by admin.js -->
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /admin-grid -->
+
+        <!-- ── Registrations Section ───────────────────────── -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h3>👥 All Registrations</h3>
+            <!-- Search within registrations -->
+            <div class="search-input-wrap" style="max-width:260px;">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="regSearch" class="form-control"
+                     placeholder="Search by name or email…"
+                     style="padding-left:2.4rem;" />
+            </div>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <div class="table-wrap" id="registrationsTableWrap">
+              <!-- Populated by admin.js -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 <strong>CampusConnect</strong> — College Event Management System</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

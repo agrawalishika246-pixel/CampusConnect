@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register – CampusConnect</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-icon">🎓</span>
+        CampusConnect
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="page-body">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="container">
+        <h1>📝 Event Registration</h1>
+        <p>Fill in your details below to secure your spot at the event.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- The form card is centered (max-width set in CSS) -->
+        <div class="form-card" id="formSection">
+
+          <!-- Event summary box — shown when arriving from event-details page -->
+          <div id="eventSummary" class="d-none" style="
+            background:#f0f4ff; border:1px solid #c7d2fe;
+            border-radius:8px; padding:1rem; margin-bottom:1.5rem;">
+            <!-- Populated by register.js -->
+          </div>
+
+          <h2 style="margin-bottom:1.5rem;">Student Registration</h2>
+
+          <!-- ── Registration Form ─────────────────────────── -->
+          <form id="registrationForm" novalidate>
+
+            <!-- Event selection dropdown -->
+            <div class="form-group">
+              <label for="eventSelect">
+                Select Event <span class="required">*</span>
+              </label>
+              <select id="eventSelect" class="form-control" name="eventId" required>
+                <option value="">— Choose an event —</option>
+                <!-- Options populated dynamically by register.js -->
+              </select>
+              <span class="form-error d-none" id="err-event">Please select an event.</span>
+            </div>
+
+            <!-- Student Name -->
+            <div class="form-group">
+              <label for="studentName">
+                Full Name <span class="required">*</span>
+              </label>
+              <input type="text" id="studentName" class="form-control"
+                     name="name" placeholder="e.g. Priya Sharma" required />
+              <span class="form-error d-none" id="err-name">
+                Please enter your full name (at least 3 characters).
+              </span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="studentEmail">
+                College Email <span class="required">*</span>
+              </label>
+              <input type="email" id="studentEmail" class="form-control"
+                     name="email" placeholder="e.g. priya@college.edu" required />
+              <span class="form-error d-none" id="err-email">
+                Please enter a valid email address.
+              </span>
+            </div>
+
+            <!-- Branch -->
+            <div class="form-group">
+              <label for="studentBranch">
+                Branch / Department <span class="required">*</span>
+              </label>
+              <select id="studentBranch" class="form-control" name="branch" required>
+                <option value="">— Select your branch —</option>
+                <option value="Computer Science">Computer Science (CSE)</option>
+                <option value="Information Technology">Information Technology (IT)</option>
+                <option value="Electronics & Communication">Electronics &amp; Communication (ECE)</option>
+                <option value="Electrical Engineering">Electrical Engineering (EEE)</option>
+                <option value="Mechanical Engineering">Mechanical Engineering (ME)</option>
+                <option value="Civil Engineering">Civil Engineering (CE)</option>
+                <option value="Chemical Engineering">Chemical Engineering (ChE)</option>
+                <option value="MBA">MBA</option>
+                <option value="MCA">MCA</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="form-error d-none" id="err-branch">Please select your branch.</span>
+            </div>
+
+            <!-- Year -->
+            <div class="form-group">
+              <label for="studentYear">
+                Year of Study <span class="required">*</span>
+              </label>
+              <select id="studentYear" class="form-control" name="year" required>
+                <option value="">— Select year —</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="Postgraduate">Postgraduate</option>
+              </select>
+              <span class="form-error d-none" id="err-year">Please select your year of study.</span>
+            </div>
+
+            <!-- Phone (optional) -->
+            <div class="form-group">
+              <label for="studentPhone">Phone Number <em style="font-weight:400;color:#64748b;">(optional)</em></label>
+              <input type="tel" id="studentPhone" class="form-control"
+                     name="phone" placeholder="e.g. 9876543210" />
+              <span class="form-hint">10-digit Indian mobile number</span>
+              <span class="form-error d-none" id="err-phone">
+                Please enter a valid 10-digit phone number.
+              </span>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-lg w-100 mt-2" id="submitBtn">
+              Submit Registration
+            </button>
+
+          </form>
+        </div>
+
+        <!-- ── Success Screen (hidden until form submitted) ── -->
+        <div class="form-card d-none" id="successSection">
+          <div class="success-screen">
+            <div class="success-icon">🎉</div>
+            <h2 style="color:#166534; margin-bottom:.5rem;">Registration Successful!</h2>
+            <p id="successMsg" style="font-size:1rem; margin-bottom:1.5rem;"></p>
+            <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px;
+                        padding:1rem; margin-bottom:1.5rem; text-align:left;">
+              <p style="margin:0; font-size:.88rem; color:#15803d;">
+                ✅ Your registration has been saved.<br/>
+                📋 Please carry your college ID on the day of the event.<br/>
+                📧 Details have been noted for organiser reference.
+              </p>
+            </div>
+            <div class="flex-center" style="gap:1rem; flex-wrap:wrap;">
+              <a href="events.html" class="btn btn-primary">Browse More Events</a>
+              <button onclick="resetForm()" class="btn btn-outline-primary">Register for Another</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 <strong>CampusConnect</strong> — College Event Management System</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

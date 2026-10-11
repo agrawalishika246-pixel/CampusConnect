@@ -1,0 +1,16 @@
+{
+  "name": "campusconnect",
+  "version": "1.0.0",
+  "description": "College Event Management System - CampusConnect",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "npx nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": ["college", "events", "management"],
+  "author": "CampusConnect Team",
+  "license": "MIT"
+}
