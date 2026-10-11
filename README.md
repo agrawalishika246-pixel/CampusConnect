@@ -163,4 +163,4 @@ Some ideas for next steps:
 
 ---
 
-*Built as a beginner-friendly college project — CampusConnect 2025*
+*Built as a beginner-friendly college project — CampusConnect 2026*
